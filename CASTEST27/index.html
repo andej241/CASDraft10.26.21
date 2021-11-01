@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City as Systems</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <canvas class="webgl"></canvas>
+<!-- 
+   <img class="gif" src="./assets/img/nycg.gif"> -->
+
+<!-- Three.js library -->
+<script src="https://threejs.org/build/three.min.js"></script>
+<!-- GLTFLoader.js source -->
+<script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+const canvas = document.querySelector('.webgl')
+    const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true 
+});
+
+const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
+
+renderer.setSize(sizes.width, sizes.height)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
+    const scene = new THREE.Scene();
+    let Mesh;
+    let light;
+
+    window.addEventListener('resize', () =>
+{
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+})
+
+    function loadGLTF() {
+        let balloonLoader = new THREE.GLTFLoader();
+        balloonLoader.load('./model/coin4.gltf', (gltf) => {
+            Mesh = gltf.scene;
+            Mesh.scale.set(0.049,0.049,0.049);
+            scene.add(Mesh);
+            Mesh.position.x = .5;
+            Mesh.position.y = 9;
+            Mesh.position.z = 14;
+        });
+    }
+
+// const loader = new GLTFLoader()
+// loader.load('./model/resizedcoin2.glb', function(glb){
+//     console.log(glb)
+//     const root = glb.scene;
+//     scene.add(root);
+// },    function(xhr){
+//     console.log((xhr.loader/xhr.total * 100) + "% loaded")
+// },    function(error){
+//     console.log('An error occurred')
+// })
+
+const testLight = new THREE.DirectionalLight(0xffffff, 5)
+testLight.position.set(5,.05,5),
+scene.add(testLight)
+
+const newLight = new THREE.DirectionalLight(0xffffff, 5)
+newLight.position.set(5,.5,5),
+scene.add(newLight)
+
+
+
+
+    function init() {
+        camera.position.set(0, 10, 20);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+    }
+
+    function setLight() {
+    const color = 0xFFFFFF;
+        setLight = new THREE.AmbientLight(color)
+        scene.add(setLight)
+    }
+    
+
+    const animate = function () {
+    requestAnimationFrame( animate );
+
+    Mesh.rotation.y += 0.01;
+
+    renderer.render( scene, camera );
+};
+
+
+    init();
+    setLight();
+    loadGLTF();
+    animate();
+    testLight();
+
+</script>
+</body>
+</html>
