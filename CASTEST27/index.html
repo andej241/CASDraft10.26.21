@@ -34,6 +34,18 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     let Mesh;
     let light;
 
+function loadGLTF() {
+        let balloonLoader = new THREE.GLTFLoader();
+        balloonLoader.load('./model/coinendFFFFF.gltf', (gltf) => {
+            Mesh = gltf.scene;
+            Mesh.scale.set(0.049,0.049,0.049);
+            scene.add(Mesh);
+            Mesh.position.x = .5;
+            Mesh.position.y = 9;
+            Mesh.position.z = 14;
+        });
+    }
+
     window.addEventListener('resize', () =>
 {
     // Update sizes
@@ -46,39 +58,14 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 })
 
-    function loadGLTF() {
-        let balloonLoader = new THREE.GLTFLoader();
-        balloonLoader.load('./model/coin4.gltf', (gltf) => {
-            Mesh = gltf.scene;
-            Mesh.scale.set(0.049,0.049,0.049);
-            scene.add(Mesh);
-            Mesh.position.x = .5;
-            Mesh.position.y = 9;
-            Mesh.position.z = 14;
-        });
-    }
-
-// const loader = new GLTFLoader()
-// loader.load('./model/resizedcoin2.glb', function(glb){
-//     console.log(glb)
-//     const root = glb.scene;
-//     scene.add(root);
-// },    function(xhr){
-//     console.log((xhr.loader/xhr.total * 100) + "% loaded")
-// },    function(error){
-//     console.log('An error occurred')
-// })
-
-const testLight = new THREE.DirectionalLight(0xffffff, 5)
-testLight.position.set(5,.05,5),
-scene.add(testLight)
-
-const newLight = new THREE.DirectionalLight(0xffffff, 5)
-newLight.position.set(5,.5,5),
-scene.add(newLight)
+    const ambient = new THREE.AmbientLight( 0xffffff)
+        scene.add( ambient )
 
 
-
+    const newLight = new THREE.DirectionalLight(0xffffff, 10.25*1000)
+        newLight.position.set(5,.5,5),
+        scene.add(newLight)
+ 
 
     function init() {
         camera.position.set(0, 10, 20);
@@ -86,13 +73,7 @@ scene.add(newLight)
         document.body.appendChild(renderer.domElement);
     }
 
-    function setLight() {
-    const color = 0xFFFFFF;
-        setLight = new THREE.AmbientLight(color)
-        scene.add(setLight)
-    }
     
-
     const animate = function () {
     requestAnimationFrame( animate );
 
@@ -103,10 +84,12 @@ scene.add(newLight)
 
 
     init();
-    setLight();
     loadGLTF();
     animate();
-    testLight();
+    ambient();
+    newLight();
+
+
 
 </script>
 </body>
