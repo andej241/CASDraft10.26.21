@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+.gif {
+  height: 100vh;
+  background-image: url("../assets/img/nycg.gif");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gif {
+  filter: blur(2px);
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+a {
+  width: 100%;
+  height: 100%;
+}
+
+#Blackbox {
+  font-family: myFirstFont;
+  background-color: black;
+  color: goldenrod;
+  position: absolute;
+  bottom: -350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+  line-height: 200%;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url("digital-7.ttf");
+}
+
+#linkbox {
+  position: fixed;
+  flex-wrap: wrap;
+  top: 50;
+  left: 300px;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+}
+
+a {
+  size: 14px;
+}

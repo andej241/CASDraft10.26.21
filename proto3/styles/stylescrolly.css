@@ -1,0 +1,74 @@
+* {
+  font-family: "Arial";
+  color: white;
+  margin: 20px;
+  background-color: black;
+}
+
+
+.graphic {
+  position: sticky;
+  top: 40%;
+  left: 70%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borough {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s linear;
+}
+
+p {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scrolly {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  position: relative;
+}
+section {
+  flex-basis: 50%;
+}
+.scroll-step {
+  background-color: white;
+  font-family: "Dongle", sans-serif;
+  color: black;
+  height: 180px;
+  width: 300px;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 50px;
+  box-shadow: 6px 8px 15px darkblue;
+}
+
+.intro,
+.end {
+  height: 600px;
+}
+
+.end {
+  margin-top: 200px;
+}
+
+.shape {
+  transition: opacity 1s linear;
+  opacity: 0;
+}
+
+/* 
+.first {
+  transition: opacity 1s linear;
+  opacity: 0;
+
+} */
+
+
