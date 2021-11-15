@@ -5,6 +5,15 @@
   background-color: black;
 }
 
+.entire {
+
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  position: relative;
+
+}
+
 
 .graphic {
   position: sticky;
@@ -17,6 +26,7 @@
 }
 
 .borough {
+  z-index: 1;
   width: 100%;
   height: 100%;
   transition: all 0.3s linear;
@@ -32,9 +42,19 @@ p {
 #scrolly {
   display: flex;
   flex-direction: row;
+  height: 1610px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.histo {
+  display: flex;
+  flex-direction: column;
   height: auto;
   position: relative;
+  padding-top: 300px;
 }
+
 section {
   flex-basis: 50%;
 }
@@ -55,8 +75,8 @@ section {
   height: 600px;
 }
 
-.end {
-  margin-top: 200px;
+.histotext {
+  height: 600px;
 }
 
 .shape {
@@ -70,5 +90,50 @@ section {
   opacity: 0;
 
 } */
+
+/* 
+@keyframes histoA {
+0%   {background-color:red; left:0px; top:0px;}
+25%  {background-color:yellow; left:200px; top:0px;}
+50%  {background-color:blue; left:200px; top:200px;}
+75%  {background-color:green; left:0px; top:200px;}
+100% {background-color:red; left:0px; top:0px;}
+} */
+
+.trainhisto {
+
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  position: relative;
+
+
+}
+
+img {
+  width: 800px;
+  height: 160px;
+  position: relative;
+  animation: trains 20s infinite;
+  margin-bottom: 0px;
+}
+
+
+
+#train1 {animation-timing-function: linear;}
+#train2 {animation-timing-function: ease;}
+#train3 {animation-timing-function: ease-in;}
+#train4 {animation-timing-function: ease-out;}
+#train5 {animation-timing-function: ease-in-out;}
+#train6 {animation-timing-function: linear;}
+#train7 {animation-timing-function: ease;}
+#train8 {animation-timing-function: ease-in;}
+#train9 {animation-timing-function: ease-out;}
+#train10 {animation-timing-function: ease-in-out;}
+
+@keyframes trains {
+  from {left: -2000px;}
+  to {left: 2000px;}
+}
 
 
